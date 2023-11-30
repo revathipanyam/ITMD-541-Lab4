@@ -1,0 +1,135 @@
+/* styles.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url('sunset.png') center/cover no-repeat fixed;
+    font-family: 'Your Preferred Font', sans-serif;
+}
+
+.container {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.5); /* Add a semi-transparent white background for better readability */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #333;
+}
+
+.container-1 {
+    position: relative;
+    max-width: 800px;
+    margin: 20px auto; /* Updated to center the container using auto margin */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #333;
+}
+
+.container-1 code {
+    color: #333; /* Change this to your preferred text color */
+    text-decoration: underline;
+    cursor: pointer; /* Set cursor to pointer by default */
+}
+
+.container-1 code:hover {
+    color: #007bff; /* Change this to the color you want on hover */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+button, select, input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+select, input[type="text"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-size: 20px 20px;
+}
+
+#resultContainer {
+    margin-top: 20px;
+}
+
+#errorContainer {
+    color: #d9534f;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* styles.css */
+
+/* Add or modify styles in your existing styles.css */
+
+.modal-dialog {
+    max-width: 800px;
+    margin: 1.75rem auto; /* Vertical and horizontal centering */
+}
+
+/* Add or modify styles in your existing styles.css */
+
+.modal-content {
+    background-color: rgb(247, 218, 247); /* Change the color to your preferred background color */
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Bootstrap secondary color */
+    color: #fff;
+    border: none;
+}
+
+/* Adjust the colors and styles according to your preference */
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+/* Add more styles as needed for displaying API data */

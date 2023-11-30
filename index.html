@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Remove the integrity attribute -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Sunrise Sunset Dashboard</title>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Sunrise Sunset Dashboard</h1>
+
+        <div class="row mb-3">
+            <div class="col-md-6 offset-md-3">
+                <!-- Geolocation Button -->
+                <button id="geolocationBtn" class="btn btn-primary btn-block">Use Current Location</button>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6 offset-md-3">
+                <!-- Search field for ITMD 541 students -->
+                <input type="text" id="locationSearch" class="form-control" placeholder="Search for a location">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6 offset-md-3">
+                <!-- Search button -->
+                <button id="searchBtn" class="btn btn-primary btn-block" data-toggle="modal">Search</button>
+            </div>
+        </div>
+
+        <!-- Bootstrap Modal -->
+        <div class="modal fade" id="popupModal" tabindex="-1" role="dialog" aria-labelledby="popupModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content custom-modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="popupModalLabel">Details</h5>
+                    </div>                    
+                    
+                    <div class="modal-body">
+                        <!-- Popup content goes here -->
+                        <div id="popupContentText" class="row">
+                            <div class="col-md-6">
+                                <h2>Today</h2>
+                                <p><i class="fas fa-sun"></i> <strong>Sunrise:</strong> <span id="sunriseToday"></span></p>
+                                <p><i class="fas fa-sun"></i> <strong>Sunset:</strong> <span id="sunsetToday"></span></p>
+                                <p><i class="far fa-lightbulb"></i> <strong>Dawn:</strong> <span id="dawnToday"></span></p>
+                                <p><i class="fas fa-adjust"></i> <strong>Dusk:</strong> <span id="duskToday"></span></p>
+                                <p><i class="far fa-clock"></i> <strong>Day Length:</strong> <span id="dayLengthToday"></span></p>
+                                <p><i class="fas fa-sun"></i> <strong>Solar Noon:</strong> <span id="solarNoonToday"></span></p>
+                                <p><i class="fas fa-globe"></i> <strong>Time Zone:</strong> <span id="timeZoneToday"></span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <h2>Tomorrow</h2>
+                                <p><i class="fas fa-sun"></i> <strong>Sunrise:</strong> <span id="sunriseTomorrow"></span></p>
+                                <p><i class="fas fa-sun"></i> <strong>Sunset:</strong> <span id="sunsetTomorrow"></span></p>
+                                <p><i class="far fa-lightbulb"></i> <strong>Dawn:</strong> <span id="dawnTomorrow"></span></p>
+                                <p><i class="fas fa-adjust"></i> <strong>Dusk:</strong> <span id="duskTomorrow"></span></p>
+                                <p><i class="far fa-clock"></i> <strong>Day Length:</strong> <span id="dayLengthTomorrow"></span></p>
+                                <p><i class="fas fa-sun"></i> <strong>Solar Noon:</strong> <span id="solarNoonTomorrow"></span></p>
+                                <p><i class="fas fa-globe"></i> <strong>Time Zone:</strong> <span id="timeZoneTomorrow"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Display Sunrise Sunset data -->
+        <div id="resultContainer">
+            <!-- Data from the API will be dynamically inserted here -->
+        </div>
+
+        <!-- Error message container -->
+        <div id="errorContainer"></div>
+        
+    </div>
+
+    <div class="container-1 mt-5">
+        <div class="col-md-6 offset-md-3">
+            <h2>Example Requests</h2>
+            <ul>
+                <li>
+                    <strong>Standard request:</strong>
+                    <code>
+                        https://api.sunrisesunset.io/json?lat=38.907192&lng=-77.036873
+                    </code>
+                </li>
+                <li>
+                    <strong>Specific date and setting timezone request:</strong>
+                    <code>
+                        https://api.sunrisesunset.io/json?lat=38.907192&lng=-77.036873&timezone=UTC&date=1990-05-22
+                    </code>
+                </li>
+                <li>
+                    <strong>Date range request:</strong>
+                    <code>
+                        https://api.sunrisesunset.io/json?lat=38.907192&lng=-77.036873&date_start=1990-05-01&date_end=1990-07-01
+                    </code>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Add Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
