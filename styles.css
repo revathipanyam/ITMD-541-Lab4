@@ -12,7 +12,7 @@ body {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.5); /* Add a semi-transparent white background for better readability */
+    background-color: rgba(255, 255, 255, 0.5); 
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -22,7 +22,7 @@ body {
 .container-1 {
     position: relative;
     max-width: 800px;
-    margin: 20px auto; /* Updated to center the container using auto margin */
+    margin: 20px auto;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
@@ -31,13 +31,13 @@ body {
 }
 
 .container-1 code {
-    color: #333; /* Change this to your preferred text color */
+    color: #333; 
     text-decoration: underline;
-    cursor: pointer; /* Set cursor to pointer by default */
+    cursor: pointer; 
 }
 
 .container-1 code:hover {
-    color: #007bff; /* Change this to the color you want on hover */
+    color: #007bff; 
 }
 
 h1 {
@@ -77,19 +77,17 @@ select, input[type="text"] {
     margin-top: 10px;
 }
 
-/* styles.css */
 
-/* Add or modify styles in your existing styles.css */
 
 .modal-dialog {
     max-width: 800px;
     margin: 1.75rem auto; /* Vertical and horizontal centering */
 }
 
-/* Add or modify styles in your existing styles.css */
+
 
 .modal-content {
-    background-color: rgb(247, 218, 247); /* Change the color to your preferred background color */
+    background-color: rgb(247, 218, 247); 
     border: none;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -120,7 +118,7 @@ select, input[type="text"] {
     border: none;
 }
 
-/* Adjust the colors and styles according to your preference */
+
 
 .close {
     position: absolute;
@@ -132,4 +130,4 @@ select, input[type="text"] {
     background: none;
 }
 
-/* Add more styles as needed for displaying API data */
+
