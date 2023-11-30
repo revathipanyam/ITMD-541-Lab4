@@ -1,13 +1,5 @@
 // script.js
 
-// Standard request:
-// https://api.sunrisesunset.io/json?lat=38.907192&lng=-77.036873
-
-// Specific date and setting timezone request: 
-// https://api.sunrisesunset.io/json?lat=38.907192&lng=-77.036873&timezone=UTC&date=1990-05-22
-
-// Date range request:
-// https://api.sunrisesunset.io/json?lat=38.907192&lng=-77.036873&date_start=1990-05-01&date_end=1990-07-01
 
 document.addEventListener('DOMContentLoaded', function () {
     // Elements
@@ -68,8 +60,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Get the current year, month, and day
         var year = today.getFullYear();
-        var month = ('0' + (today.getMonth() + 1)).slice(-2); // Add leading zero if needed
-        var day = ('0' + today.getDate()).slice(-2); // Add leading zero if needed
+        var month = ('0' + (today.getMonth() + 1)).slice(-2); 
+        var day = ('0' + today.getDate()).slice(-2); 
 
         // Format the date as "YYYY-MM-DD"
         var formattedDate = year + '-' + month + '-' + day;
@@ -79,8 +71,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Get the year, month, and day of the next day
         var nextYear = nextDay.getFullYear();
-        var nextMonth = ('0' + (nextDay.getMonth() + 1)).slice(-2); // Add leading zero if needed
-        var nextDayOfMonth = ('0' + nextDay.getDate()).slice(-2); // Add leading zero if needed
+        var nextMonth = ('0' + (nextDay.getMonth() + 1)).slice(-2); 
+        var nextDayOfMonth = ('0' + nextDay.getDate()).slice(-2); 
 
         // Format the next day's date as "YYYY-MM-DD"
         var formattedNextDay = nextYear + '-' + nextMonth + '-' + nextDayOfMonth;
@@ -88,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("Next day's date is: " + formattedNextDay);
 
         // Implement logic to fetch data from the Sunrise Sunset API
-        // Use the location parameter to specify the location in the API request
         const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
         const apiUrl = `https://api.sunrisesunset.io/json?lat=${latitude}&lng=${longitude}&date_start=${formattedDate}&date_end=${formattedNextDay}`;
         await fetch(proxyUrl + apiUrl)
@@ -97,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 $('#popupModal').modal('show');
                 // Update the DOM with the received data
                 if(method = "auto") {
-                    const [country, cityName] = data.results[0].timezone.split('/'); // Replace 'city' with the actual property in the response containing the city name
+                    const [country, cityName] = data.results[0].timezone.split('/'); 
                     updateModalTitle(cityName);
                 }
                 updateDashboard(data.results[0], data.results[1]);
