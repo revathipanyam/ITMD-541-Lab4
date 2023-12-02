@@ -1,6 +1,5 @@
 // script.js
 
-
 document.addEventListener('DOMContentLoaded', function () {
     // Elements
     const geolocationBtn = document.getElementById('geolocationBtn');
@@ -28,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
-    
+
     function getUserLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
@@ -60,8 +59,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Get the current year, month, and day
         var year = today.getFullYear();
-        var month = ('0' + (today.getMonth() + 1)).slice(-2); 
-        var day = ('0' + today.getDate()).slice(-2); 
+        var month = ('0' + (today.getMonth() + 1)).slice(-2); // Add leading zero if needed
+        var day = ('0' + today.getDate()).slice(-2); // Add leading zero if needed
 
         // Format the date as "YYYY-MM-DD"
         var formattedDate = year + '-' + month + '-' + day;
@@ -71,8 +70,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Get the year, month, and day of the next day
         var nextYear = nextDay.getFullYear();
-        var nextMonth = ('0' + (nextDay.getMonth() + 1)).slice(-2); 
-        var nextDayOfMonth = ('0' + nextDay.getDate()).slice(-2); 
+        var nextMonth = ('0' + (nextDay.getMonth() + 1)).slice(-2); // Add leading zero if needed
+        var nextDayOfMonth = ('0' + nextDay.getDate()).slice(-2); // Add leading zero if needed
 
         // Format the next day's date as "YYYY-MM-DD"
         var formattedNextDay = nextYear + '-' + nextMonth + '-' + nextDayOfMonth;
@@ -80,32 +79,30 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("Next day's date is: " + formattedNextDay);
 
         // Implement logic to fetch data from the Sunrise Sunset API
-        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        // Use the location parameter to specify the location in the API request
         const apiUrl = `https://api.sunrisesunset.io/json?lat=${latitude}&lng=${longitude}&date_start=${formattedDate}&date_end=${formattedNextDay}`;
-        await fetch(proxyUrl + apiUrl)
+
+        await fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
                 $('#popupModal').modal('show');
-                // Update the DOM with the received data
-                if(method = "auto") {
-                    const [country, cityName] = data.results[0].timezone.split('/'); 
+                if (method === "auto") {
+                    const [country, cityName] = data.results[0].timezone.split('/');
                     updateModalTitle(cityName);
                 }
                 updateDashboard(data.results[0], data.results[1]);
                 displayError('');
             })
             .catch(error => {
-                // Handle errors and display error message
                 displayError(error.message);
             });
     }
 
     function fetchLocationAndData(searchedLocation) {
         console.log(searchedLocation);
-        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
         const geocodeApiUrl = `https://geocode.maps.co/search?q=${searchedLocation}`;
-        console.log(geocodeApiUrl)
-        fetch(proxyUrl + geocodeApiUrl)
+
+        fetch(geocodeApiUrl)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Network response was not ok: ${response.statusText}`);
@@ -115,23 +112,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (!contentType || !contentType.includes('application/json')) {
                     throw new Error('The response is not in JSON format. Please try again with a different location.');
                 }
-                console.log(response, "amith")
                 return response.json();
             })
             .then(geocodeData => {
-                console.log(geocodeData[0]);
-                const cityName = searchedLocation; // Replace 'city' with the actual property in the response containing the city name
+                const cityName = searchedLocation;
                 updateModalTitle(cityName);
-                
+
                 const latitude = geocodeData[0].lat;
                 const longitude = geocodeData[0].lon;
-                // Fetch sunrise and sunset data using the obtained latitude and longitude
                 fetchDataForLocation(latitude, longitude, "manual");
             })
             .catch(error => {
-                // Handle errors from the geocode API
-                console.log(error.message);
-                if(error.message.includes('Cannot')) {
+                if (error.message.includes('Cannot')) {
                     displayError("Please provide a City name")
                 } else {
                     displayError(error.message);
